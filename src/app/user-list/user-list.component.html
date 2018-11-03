@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>User List</mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let user of users">
+        <img mat-list-avatar src="{{user.picture.thumbnail}}" alt="{{user.name.first}}">
+        <h3 mat-line>{{user.name.first}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+    <button mat-raised-button color="primary" [routerLink]="['/user-add']">Add</button>
+    &nbsp;
+    <button mat-raised-button color="primary" [routerLink]="['/user-edit/1']">Edit</button>
+</mat-card>
