@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
-  private api  = '//localhost:8080';//service(rest api)
+  private api  = '//localhost:8080'; // service(rest api)
   private userApi = this.api + '/users';
 
   constructor(private http: HttpClient) { }

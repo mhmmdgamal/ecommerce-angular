@@ -1,75 +1,76 @@
 // modules
-import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserModule } from '@angular/platform-browser/src/browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 // components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserAddComponent } from './user-add/user-add.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 // services
-import { UserService } from './shared/user.service';
-import { CommonModule } from '@angular/common';
-
-//pahts
-const appRoutes: Routes = [
-    {
-      path: '',
-      redirectTo: '/home',
-      pathMatch: 'full'
-    },
-    {
-      path: 'home',
-      component: HomeComponent
-    },
-    {
-      path: 'user-list',
-      component: UserListComponent
-    },
-    {
-      path: 'user-add',
-      component: UserAddComponent
-    },
-    {
-      path: 'user-edit/:id',
-      component: UserEditComponent
-    }
-  ];
+import { UserService } from './shared/services/user.service';
+import { CategoryService } from './shared/services/category.service';
+import { ProductService } from './shared/services/product.service';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      HomeComponent,
-      UserListComponent,
-      UserAddComponent,
-      UserEditComponent
-   ],
-   imports: [
-      BrowserModule,
-      HttpClientModule,
-      MatButtonModule,
-      MatCardModule,
-      MatInputModule,
-      MatListModule,
-      MatToolbarModule,
-      FormsModule,
-      RouterModule.forRoot(appRoutes),
-      BrowserAnimationsModule,
-      CommonModule
-   ],
-   providers: [
-      UserService
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    LoginComponent,
+    MyOrdersComponent,
+    OrderSuccessComponent,
+    ShoppingCartComponent,
+    CheckOutComponent,
+    ProductCardComponent,
+    AdminOrdersComponent,
+    AdminProductsComponent,
+    ProductsComponent,
+    ProfileComponent,
+    ProductFormComponent,
+  ],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    FormsModule,
+    CustomFormsModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'check-out', component: CheckOutComponent },
+      { path: 'order-success', component: OrderSuccessComponent },
+      { path: 'my-orders', component: MyOrdersComponent },
+      { path: 'admin/orders', component: AdminOrdersComponent },
+      { path: 'admin/products/new', component: ProductFormComponent },
+      { path: 'admin/products/:title', component: ProductFormComponent },
+      { path: 'admin/products', component: AdminProductsComponent },
+      { path: 'profile', component: ProfileComponent },
+    ]),
+  ],
+  providers: [
+    UserService,
+    CategoryService,
+    ProductService,
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
